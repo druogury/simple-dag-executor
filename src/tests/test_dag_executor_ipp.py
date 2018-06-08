@@ -1,14 +1,10 @@
 # coding: utf-8
-import os
 from networkx.readwrite import json_graph
 
 from project import *
 from src.dag_executor_ipp import *
-from src.aws_redshift_connect import *
-
-
-def run_bash_cmd(cmd):
-    os.system(cmd)
+from src.utils_aws_redshift import *
+from src.utils_bash import run_bash_cmd
 
 
 def test_TaskDAG1():
