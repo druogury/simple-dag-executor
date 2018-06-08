@@ -43,17 +43,19 @@ class TaskDAG():
             with view.temp_flags(after=deps, block=False):
                 results[node] = view.apply(jobs[node])
 
+        self.results = results
+        
         # Now that we have submitted all the jobs, we can wait for the results
-        view.wait(results.values())
+        view.wait(self.results.values())
 
-        self.check_tree(results)
+        # self.check_tree(results)
 
-    def check_tree(self, results):
+    def check_tree(self):
         """Validate that jobs executed after their dependencies."""
         for node in self.G:
-            started = results[node].metadata.started
+            started = self.results[node].metadata.started
             for parent in self.G.predecessors(node):
-                finished = results[parent].metadata.completed
+                finished = self.results[parent].metadata.completed
                 assert started > finished, "{} should have happened after {}".format(
                     node, parent)        
 

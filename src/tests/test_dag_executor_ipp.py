@@ -1,4 +1,5 @@
 # coding: utf-8
+import time
 from networkx.readwrite import json_graph
 
 from project import *
@@ -34,3 +35,5 @@ def test_TaskDAG_bash():
     # print(json_graph.node_link_data(dag.G)['links'])
     # print([n for n in dag.G])
     dag.execute()
+    time.sleep(10)
+    dag.check_tree()
