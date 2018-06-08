@@ -7,7 +7,7 @@ from src.utils_aws_redshift import *
 from src.utils_bash import run_bash_cmd
 
 
-def test_TaskDAG1():
+def test_TaskDAG_redshift():
     # TypeError: can't pickle psycopg2.extensions.connection objects
     """
     parser.read(PARAM_FILE)
@@ -28,7 +28,7 @@ def test_TaskDAG1():
     pass
 
     
-def test_TaskDAG2():
+def test_TaskDAG_bash():
     dag = TaskDAG(run_bash_cmd, TST_BASH_DIR)
     dag.build(TST_BASH_DIR + "dependencies.txt")
     # print(json_graph.node_link_data(dag.G)['links'])

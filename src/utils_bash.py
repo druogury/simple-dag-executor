@@ -3,4 +3,5 @@ import os
 
 
 def run_bash_cmd(cmd):
-    os.system(cmd)
+    status = os.system(cmd)
+    return status
